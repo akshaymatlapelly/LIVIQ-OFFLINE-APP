@@ -1,21 +1,21 @@
-# SENTRIX: The Real-World Intelligence Platform
+# LIVIQ: Three Layers of Offline Health Intelligence
 
-> **TAGLINE:** Sense. Understand. Act.  
-> **CORE PHILOSOPHY:** POINT → SENSE → UNDERSTAND → DECIDE → ACT
+> **TAGLINE:** One Phone. Three Layers of Health Intelligence.  
+> **CORE PIPELINE:** POINT → SENSE → UNDERSTAND → DECIDE → ACT
 
 ---
 
 ## 🌟 Overview
 
-**SENTRIX** is an AI-powered smartphone intelligence platform that extends smartphone capabilities beyond conventional apps. It unifies camera, microphone, IMU, GPS, NPU/AI processing, speaker, flash, display, haptics, and connectivity through one central intelligence layer for the physical world.
+**LIVIQ** is an offline-first AI health intelligence platform designed for mobile devices. Powered by phone-first optical sensing, 38 TOPS local NPU processing, and a multi-lingual voice intelligence engine, LIVIQ organizes real-world health sensing into three continuous layers:
 
-This repository contains **ONE unified platform** with six major capabilities:
-1. **SENTRIX Inspection**: Real-world visual inspection assistant for structural, electrical, and hazard analysis.
-2. **Medicine Investigator**: Visual packaging screening for suspicious counter-feit indicators and anti-tamper seals.
-3. **AuraLens**: Multimodal physical-world input conversion into structured data (receipts, documents, appliance error codes).
-4. **Ultrasonic Radar**: High-frequency acoustic sensing concepts for zero-visibility spatial environment mapping.
-5. **Haptic Language**: Tactile communication system using structured linear resonant vibration code patterns.
-6. **Optical Air-Gap**: Secure device-to-device optical communication via screen strobe and camera pulses without RF radios.
+1. **INSIGHT (Layer 1 - Emergency Response Intelligence):**
+   - Evaluates acute physical trauma, injury severity, and tissue inflammation using camera vision and thermal color framing.
+   - Outputs immediate emergency triage protocols.
+2. **MEDSURE (Layer 2 - Medicine Understanding & Safety):**
+   - Screens blister packaging micro-printing, anti-tamper seals, dosage schedules, and allergen conflict warnings using macro strobe lens and OCR micro-kerning.
+3. **HEALTRACE (Layer 3 - Everyday Health Intelligence):**
+   - Transforms medical lab report prints, clinical summaries, and routine vital checks into a continuous health trajectory. Includes dedicated sub-modules for Food, Gym, Yoga, Sleep, Activity, Hydration, Health Replay, and Personal Baseline tracing.
 
 ---
 
@@ -24,24 +24,25 @@ This repository contains **ONE unified platform** with six major capabilities:
 Strict separation between `/frontend` and `/backend`:
 
 ```
-iQOO/
+LIVIQ-OFFLINE-APP/
 ├── frontend/             # React + Vite + TypeScript + Tailwind CSS
+│   ├── public/           # Static video assets (INSIGHT-VIDEO.mp4, MEDSURE-VIDEO.mp4, HEALTRACE-VIDEO.mp4)
 │   ├── src/
-│   │   ├── components/   # Reusable UI (GlassCard, AIStatus, ConfidenceMeter, RiskBadge, SafetyDisclaimer, etc.)
+│   │   ├── components/   # Reusable UI (GlassCard, AIStatus, Sidebar, Header, MobileNav, ScanAnimation, etc.)
 │   │   ├── context/      # AuthContext for session management
-│   │   ├── font/ & types/ # Domain models & API types
-│   │   ├── layouts/      # AppLayout shell with Desktop Sidebar & Mobile Nav
-│   │   ├── pages/        # Landing Page (/), Auth (/signin, /signup), Dashboard (/home), 6 Capabilities, Demo Tour (/demo)
-│   │   └── services/     # REST API client
+│   │   ├── features/     # Global LIVIQ Voice Agent (Speech Recognition & TTS)
+│   │   ├── layouts/      # AppLayout shell with Desktop Sidebar & Mobile Drawer
+│   │   ├── pages/        # Landing Page (/), Auth (/signin, /signup), Dashboard (/home), How It Works (/how-it-works), 3 Health Modules, Sub-Traces, Demo Tour (/demo)
+│   │   └── services/     # REST API client & local NPU fallback engines
 │   └── vite.config.ts
 └── backend/              # Node.js + Express + TypeScript REST API
     ├── src/
     │   ├── config/       # Environment variables & CORS settings
     │   ├── controllers/  # API request controllers
     │   ├── middleware/   # JWT authentication & error handling
-    │   ├── repository/   # Repository abstraction (InMemory / Postgres ready)
+    │   ├── repository/   # InMemory / DB abstraction layer
     │   ├── routes/       # Express API routes (/api/*)
-    │   ├── services/     # SENTRIX Intelligence Core domain logic
+    │   ├── services/     # LIVIQ Intelligence Core domain logic
     │   └── types/        # TypeScript interfaces
     └── tsconfig.json
 ```
@@ -69,11 +70,11 @@ npm install
 ```
 
 ### 2. Configure Environment Variables
-Copy `.env.example` to `backend/.env` or configure root `.env`:
+Copy `.env.example` or configure root `.env`:
 ```env
 PORT=5000
 NODE_ENV=development
-JWT_SECRET=sentrix_deep_tech_secret_key_2026_x99
+JWT_SECRET=liviq_health_intelligence_secret_key_2026
 CORS_ORIGIN=http://localhost:5173
 ```
 
@@ -98,7 +99,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ## 🔐 Demo Credentials
 
 Pre-seeded Demo User:
-- **Email:** `demo@sentrix.ai`
+- **Email:** `demo@liviq.ai`
 - **Password:** `password123`
 
 Or register a new account on the `/signup` page!
@@ -115,34 +116,28 @@ Or register a new account on the `/signup` page!
 ### Universal Intelligence Core
 - `POST /api/scan/classify` - Auto-classify physical scan category and route to optimum capability
 
-### Capabilities
-- `POST /api/inspection/analyze` - Structural wall, pothole, electrical, and leak analysis
-- `POST /api/medicine/analyze` - Packaging micro-print & tamper seal visual indicator screening
-- `POST /api/auralens/analyze` - Extract receipt totals, document summaries, or appliance error codes
-- `POST /api/radar/simulate` - Execute ultrasonic acoustic echo spatial sweep
-- `GET  /api/haptic/codebook` - Retrieve haptic vibration pattern dictionary
-- `POST /api/haptic/encode` - Encode text message into vibration pulse timing sequence
-- `POST /api/haptic/decode` - Decode haptic hex transmission payload back into text
-- `POST /api/optical/transfer` - Simulate optical light pulse air-gap payload transfer
+### Core Health Modules
+- `POST /api/inspection/analyze` - INSIGHT emergency trauma and acute symptom triage
+- `POST /api/medicine/analyze` - MEDSURE blister packaging & allergen conflict screening
+- `POST /api/auralens/analyze` - HEALTRACE lab report OCR & biomarker trajectory ingestion
 
 ### Platform Services
 - `GET    /api/history` - Fetch user activity audit log
 - `DELETE /api/history/:id` - Delete specific history record
 - `DELETE /api/history` - Clear user history log
-- `GET    /api/hardware` - Fetch smartphone sensor telemetry health status
+- `GET    /api/hardware` - Fetch smartphone sensor telemetry health status (38 TOPS NPU status)
 
 ---
 
-## 🛡 Trust, Safety & Hardware Disclaimer
+## 🛡 Trust, Safety & Medical Disclaimer
 
-Every capability in SENTRIX clearly distinguishes prototype/simulation modes from raw hardware access:
-- **SENTRIX Inspection**: First-level visual screening assistant. Does **not** replace certified civil engineers or electrical inspectors.
-- **Medicine Investigator**: Visual packaging indicator screening. Does **not** guarantee chemical pharmaceutical authenticity.
-- **Ultrasonic Radar**: Prototype acoustic spatial visualization. Depends on speaker transducer and microphone hardware frequency response.
-- **Optical Air-Gap**: Demonstrates optical device-to-device light framing without requiring OS flash driver overrides.
+LIVIQ is designed as an offline-first health triage and intelligence assistant:
+- **INSIGHT**: First-level emergency screening tool. Does **not** replace professional emergency medical responders.
+- **MEDSURE**: Visual packaging & allergen indicator screening. Always verify prescriptions with certified pharmacists.
+- **HEALTRACE**: Continuous trend tracing based on uploaded reports and vitals. Consult physicians for formal medical diagnosis.
 
 ---
 
 ## 🏆 Hackathon Guided Demo Mode (`/demo`)
 
-Navigate to `/demo` inside the logged-in platform to access a 6-step guided presentation tour designed specifically for hackathon judges and evaluators.
+Navigate to `/demo` inside the logged-in platform to access the 6-step guided presentation tour designed specifically for hackathon evaluators.
