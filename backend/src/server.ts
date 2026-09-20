@@ -10,8 +10,8 @@ const server = app.listen(config.port, () => {
   console.log(`==================================================`);
 });
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('[SENTRIX Server Unhandled Rejection]', promise, 'reason:', reason);
+process.on('unhandledRejection', (reason: unknown, promise: Promise<unknown>) => {
+  console.error('[LIVIQ Server Unhandled Rejection]', promise, 'reason:', reason);
 });
 
 export default server;
