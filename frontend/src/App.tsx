@@ -25,7 +25,6 @@ import { HardwarePage } from './pages/HardwarePage';
 import { DemoPage } from './pages/DemoPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
-import { PoweredByIQOO } from './components/PoweredByIQOO';
 
 export const App: React.FC = () => {
   return (
@@ -76,7 +75,6 @@ export const App: React.FC = () => {
             {/* Fallback redirect */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-          <PoweredByIQOO />
         </VoiceAgentProvider>
       </Router>
     </AuthProvider>

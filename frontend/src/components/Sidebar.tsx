@@ -105,15 +105,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenSignOutModal }) => {
           <span>Sign out</span>
         </button>
 
-        {/* Powered by iQOO Branding */}
-        <div className="pt-2 text-center border-t border-slate-100/80">
-          <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <span>Powered by</span>
-            <span className="text-black font-extrabold font-sans text-xs tracking-tight bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200/80 shadow-2xs">
-              iQOO
-            </span>
-          </div>
-        </div>
       </div>
     </aside>
   );

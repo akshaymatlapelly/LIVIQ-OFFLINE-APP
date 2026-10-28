@@ -408,7 +408,7 @@ export const LandingPage: React.FC = () => {
             LIVIQ Health Intelligence Platform
           </div>
           <div className="flex items-center gap-2">
-            <span>© 2026 LIVIQ Health Inc. Powered by iQOO.</span>
+            <span>© 2026 LIVIQ Health Inc.</span>
             <span className="font-mono font-extrabold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300 text-[10px]">
               DEMO WEBSITE
             </span>
